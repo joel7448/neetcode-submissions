@@ -1,0 +1,20 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        // Solution 1. 
+
+        // Construct a hashmap { string : List<string> } 
+        Map<String, List<String>> res = new HashMap<>();
+
+        for(String s : strs)
+        {
+            char[] charArray = s.toCharArray(); 
+            Arrays.sort(charArray);
+            String sortedString = new String(charArray);
+            res.putIfAbsent(sortedString, new ArrayList<>());
+            res.get(sortedString).add(s);
+
+        }
+
+        return new ArrayList<>(res.values());
+    }
+}
